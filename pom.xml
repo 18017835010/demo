@@ -32,6 +32,12 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.1</version>
         </dependency>
+        <!-- jxl 操作excel -->
+        <dependency>
+            <groupId>org.jxls</groupId>
+            <artifactId>jxls-jexcel</artifactId>
+            <version>1.0.6</version>
+        </dependency>
     </dependencies>
 
 

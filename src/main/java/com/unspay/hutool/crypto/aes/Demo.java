@@ -35,7 +35,7 @@ public class Demo {
     /**
      * AES加密
      */
-    private static String encrypt(String str,String key){
+    public static String encrypt(String str,String key){
         try {
             System.out.println("-------------key："+key);
             System.out.println("明文："+str);
@@ -52,12 +52,9 @@ public class Demo {
     /**
      * AES解密
      */
-    private static String decrypt(String mac,String key){
+    public static String decrypt(String mac,String key){
         try {
-            System.out.println("-------------key："+key);
-            System.out.println("密文："+mac);
             String str = SecureUtil.aes(Base64.decode(key)).decryptStr(Base64.decode(mac, CharsetUtil.UTF_8));
-            System.out.println("明文："+str);
             return mac;
         }catch (Exception e){
             e.printStackTrace();
