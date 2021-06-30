@@ -22,8 +22,14 @@ import java.util.Enumeration;
  * 首先需要通过jdk的keytool生成秘钥库等，需确保机器中安装有jdk
  * 0.在本代码环境下,执行1命令时,秘钥库的密码和证书的密码须一致，请自行修改路径
  *   请确保路径下无名为mykeystore.keystore的文件，否则可能会报密码错等
+ *   windows：
  * 1.keytool -genkey -alias mykey -keyalg RSA -keystore D:/workSpace/JMeterWorkSpace/mykey/mykeystore.keystore -keysize 1024 -validity 3650
  * 2.keytool -export -alias mykey -keystore D:/workSpace/JMeterWorkSpace/mykey/mykeystore.keystore -file  D:/workSpace/JMeterWorkSpace/mykey/mykey.cer
+ *
+ * mac：
+ * 1.keytool -genkey -alias mykey -keyalg RSA -keystore D:/workSpace/JMeterWorkSpace/mykey/mykeystore.keystore -keysize 1024 -validity 3650
+ * 2.keytool -export -alias mykey -keystore D:/workSpace/JMeterWorkSpace/mykey/mykeystore.keystore -file  D:/workSpace/JMeterWorkSpace/mykey/mykey.cer
+ *
  * 3.代码中的秘钥库密码为123456,请自行修改
  *
  */
@@ -31,22 +37,26 @@ public class Util {
 
     public static void main(String[] args) {
 
+        //windows
+//        String path = "D:/workSpace/JMeterWorkSpace/mykey/";
 
-        String path = "D:/workSpace/JMeterWorkSpace/mykey/";
+        //mac
+        String path = "/Users/chenji/Documents/workspace/JMeterWorkSpace/mykey/";
+
         String keyStoreFile = "mykeystore.keystore";
         String passwd = "123456";
         String keyAlias = "mykey";
         String pfxFile = "mykey.pfx";
         String cerFile = "mykey.cer";
 
-        System.out.println("请确保已执行完注释中的两条命令再执行本代码\n\n");
-        System.out.println("1.开始生成PFX文件");
-        coverToPfx(path + keyStoreFile, passwd, keyAlias, path + pfxFile);
+//        System.out.println("请确保已执行完注释中的两条命令再执行本代码\n\n");
+//        System.out.println("1.开始生成PFX文件");
+//        coverToPfx(path + keyStoreFile, passwd, keyAlias, path + pfxFile);
 
-        System.out.println("2.开始提取.cer中的公钥字符串");
-        String cerPub = getCerPubStr(path + cerFile);
-        System.out.println("从.cer文件中提取的公钥字符串如下:");
-        System.out.println(cerPub);
+//        System.out.println("2.开始提取.cer中的公钥字符串");
+//        String cerPub = getCerPubStr(path + cerFile);
+//        System.out.println("从.cer文件中提取的公钥字符串如下:");
+//        System.out.println(cerPub);
 
         System.out.println("3.开始提取.pfx中的公钥字符串");
         String pfxPub = getPfxPubStr(path + pfxFile,passwd);
